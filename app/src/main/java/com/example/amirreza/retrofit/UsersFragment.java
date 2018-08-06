@@ -22,9 +22,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class UsersFragment extends Fragment implements RecyclerViewAdapter.ItemClickListener {
+public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.ItemClickListener {
     List<User> users = new ArrayList<>();
-    RecyclerViewAdapter adapter;
+    UserRecyclerViewAdapter adapter;
     public UsersFragment() {
         // Required empty public constructor
     }
@@ -34,7 +34,7 @@ public class UsersFragment extends Fragment implements RecyclerViewAdapter.ItemC
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_users, container, false);
-        final RecyclerView recyclerView = view.findViewById(R.id.recycler);
+        final RecyclerView userRecyclerView = view.findViewById(R.id.userRecycler);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -49,10 +49,10 @@ public class UsersFragment extends Fragment implements RecyclerViewAdapter.ItemC
                     users = (List<User>) response.body();
                     for (User user : users)
                         Log.e("Tag",user.getPhone()+"");
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new RecyclerViewAdapter(getContext(), users) ;
+                    userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    adapter = new UserRecyclerViewAdapter(getContext(), users) ;
                     adapter.setClickListener(UsersFragment.this);
-                    recyclerView.setAdapter(adapter);
+                    userRecyclerView.setAdapter(adapter);
                 }else {
                     Log.e("Tag",response.errorBody()+"");
                 }

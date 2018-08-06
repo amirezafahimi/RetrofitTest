@@ -4,10 +4,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface Services {
     @GET("users")
     Call<List<User>> listUsers();
-    @GET("comments?postId=1")
-    Call<List<Comment>> listComments();
+    @GET("posts")
+    Call<List<Posts>> listPosts(@Query("userId") int userId);
 }

@@ -9,16 +9,22 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder> {
     private List<User> users;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    RecyclerViewAdapter(Context context, List<User> users) {
+    UserRecyclerViewAdapter(Context context, List<User> users) {
         this.mInflater = LayoutInflater.from(context);
         this.users = users;
     }
+
+    // data is passed into the constructor
+    /*RecyclerViewAdapter(Context context, List<Comment> userComments) {
+        this.mInflater = LayoutInflater.from(context);
+        this.userComments = userComments;
+    }*/
 
     // inflates the row layout from xml when needed
     @Override
