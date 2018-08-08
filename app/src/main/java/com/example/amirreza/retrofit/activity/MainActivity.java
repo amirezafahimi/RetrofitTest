@@ -1,9 +1,14 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.amirreza.retrofit.fragment.PostFragment;
+import com.example.amirreza.retrofit.R;
+import com.example.amirreza.retrofit.data.model.User;
+import com.example.amirreza.retrofit.fragment.UsersFragment;
 
 public class MainActivity extends AppCompatActivity implements UsersFragment.user {
 
@@ -21,11 +26,10 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.use
     }
 
     @Override
-    public void getUser(User user) {
-        this.user = user;
+    public void getUser(int userId) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.fragment_container, PostFragment.newInstance(user));
+        transaction.replace(R.id.fragment_container, PostFragment.newInstance(userId));
         transaction.addToBackStack(null);
         transaction.commit();
     }

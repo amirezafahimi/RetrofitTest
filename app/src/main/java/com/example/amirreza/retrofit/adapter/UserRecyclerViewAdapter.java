@@ -1,11 +1,15 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.amirreza.retrofit.R;
+import com.example.amirreza.retrofit.data.model.User;
 
 import java.util.List;
 
@@ -15,7 +19,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    UserRecyclerViewAdapter(Context context, List<User> users) {
+    public UserRecyclerViewAdapter(Context context, List<User> users) {
         this.mInflater = LayoutInflater.from(context);
         this.users = users;
     }
@@ -62,7 +66,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            Log.e("Tag",users.size()+" "+getAdapterPosition());
+            if (mClickListener != null) mClickListener.onItemClick(view, users.get(getAdapterPosition()).getId());
         }
     }
 
@@ -72,12 +77,12 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
 //    }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, int userId);
     }
 }

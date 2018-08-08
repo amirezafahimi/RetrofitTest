@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.amirreza.retrofit.R;
+import com.example.amirreza.retrofit.data.model.Posts;
+
 import java.util.List;
 
 public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder> {
@@ -14,7 +17,7 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    PostRecyclerViewAdapter(Context context, List<Posts> posts) {
+    public PostRecyclerViewAdapter(Context context, List<Posts> posts) {
         this.mInflater = LayoutInflater.from(context);
         this.posts = posts;
     }

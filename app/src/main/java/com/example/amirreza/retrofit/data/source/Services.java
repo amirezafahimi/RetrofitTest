@@ -1,4 +1,7 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.data.source;
+
+import com.example.amirreza.retrofit.data.model.Posts;
+import com.example.amirreza.retrofit.data.model.User;
 
 import java.util.List;
 

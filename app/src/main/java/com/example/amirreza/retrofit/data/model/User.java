@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
