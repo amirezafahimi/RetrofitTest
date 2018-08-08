@@ -67,7 +67,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         @Override
         public void onClick(View view) {
             Log.e("Tag",users.size()+" "+getAdapterPosition());
-            if (mClickListener != null) mClickListener.onItemClick(view, users.get(getAdapterPosition()).getId());
+            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
 
@@ -83,6 +83,6 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onItemClick(View view, int userId);
+        void onItemClick(View view, int position);
     }
 }

@@ -40,9 +40,9 @@ public class PostFragment extends Fragment implements PostPresenterInterface.Vie
 
     }
 
-    public static Fragment newInstance(int userId) {
+    public static Fragment newInstance(User user) {
         Bundle bundle = new Bundle();
-        bundle.putInt("userId", userId);
+        bundle.putInt("userId", user.getId());
         PostFragment postFragment = new PostFragment();
         postFragment.setArguments(bundle);
         return postFragment;

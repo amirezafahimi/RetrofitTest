@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity implements UsersFragment.use
     }
 
     @Override
-    public void getUser(int userId) {
+    public void getUser(User user) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.fragment_container, PostFragment.newInstance(userId));
+        transaction.replace(R.id.fragment_container, PostFragment.newInstance(user));
         transaction.addToBackStack(null);
         transaction.commit();
     }

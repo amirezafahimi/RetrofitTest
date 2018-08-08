@@ -17,7 +17,7 @@ public class UserPresenter implements UserPresenterInterface.UserActionListerner
     }
 
     @Override
-    public void getUserData(List<User> users) {
+    public void getUserData() {
         userRepository.getUserData(new GetUsers());
 
     }

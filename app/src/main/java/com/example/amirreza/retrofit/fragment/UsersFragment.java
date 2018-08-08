@@ -35,6 +35,10 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
         // Required empty public constructor
     }
 
+    public void setUsers(List<User> users){
+        this.users=users;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,11 +46,12 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
         View view = inflater.inflate(R.layout.fragment_users, container, false);
         userRecyclerView = view.findViewById(R.id.userRecycler);
         userPresenter = new UserPresenter(this,new UserRepository());
-        userPresenter.getUserData(users);
+        userPresenter.getUserData();
         return view;
     }
     @Override
     public void showUserList(List<User> users) {
+        this.users = users;
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new UserRecyclerViewAdapter(getContext(), users) ;
         adapter.setClickListener(UsersFragment.this);
@@ -55,12 +60,12 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     }
 
     public interface user {
-        void getUser(int id);
+        void getUser(User user);
     }
 
     @Override
-    public void onItemClick(View view, int userId) {
-        ((user) getContext()).getUser(userId);
+    public void onItemClick(View view, int position) {
+        ((user) getContext()).getUser(users.get(position));
     }
 
     @Override
