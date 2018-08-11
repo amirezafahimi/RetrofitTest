@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit.post_fragment;
+package com.example.amirreza.retrofit.post;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

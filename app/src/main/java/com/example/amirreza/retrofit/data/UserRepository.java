@@ -3,7 +3,7 @@ package com.example.amirreza.retrofit.data;
 import android.util.Log;
 
 import com.example.amirreza.retrofit.data.model.User;
-import com.example.amirreza.retrofit.user_fragment.UserPresenter;
+import com.example.amirreza.retrofit.user.UserPresenter;
 import com.example.amirreza.retrofit.data.source.Services;
 
 import java.util.ArrayList;
@@ -24,13 +24,12 @@ public class UserRepository {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        Services services = retrofit.create(Services.class);
-        Call<List<User>> repos = services.listUsers();
+        Call<List<User>> repos = retrofit.create(Services.class).listUsers();
         repos.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()){
-                    users = (List<User>) response.body();
+                    users = response.body();
                     for (User user : users)
                         Log.e("Tag",user.getPhone()+"");
                     mInterface.loadUserData(users);

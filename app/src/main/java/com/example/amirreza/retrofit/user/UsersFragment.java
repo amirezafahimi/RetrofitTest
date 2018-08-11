@@ -1,6 +1,7 @@
-package com.example.amirreza.retrofit.user_fragment;
+package com.example.amirreza.retrofit.user;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,26 +29,47 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     //UserPresenterInterface userPresenterInterface;
     UserRecyclerViewAdapter adapter;
 
-    public UsersFragment() {
-        // Required empty public constructor
+    public static Fragment getInstance() {
+        UsersFragment fragment = new UsersFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
     }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_users, container, false);
-        progressBar = view.findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.GONE);
-        userRecyclerView = view.findViewById(R.id.userRecycler);
-        userPresenter = new UserPresenter(this,new UserRepository());
-        userPresenter.onLoadUser();
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        userRecyclerView = view.findViewById(R.id.userRecycler);
+        progressBar = view.findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        userPresenter = new UserPresenter(this, new UserRepository());
+        userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new UserRecyclerViewAdapter(getContext(), users);
+        adapter.setClickListener(UsersFragment.this);
+        userRecyclerView.setAdapter(adapter);
+
+        userPresenter.onLoadUser();
+    }
+
     @Override
     public void showUserList(List<User> users) {
         this.users = users;
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new UserRecyclerViewAdapter(getContext(), users) ;
+        adapter = new UserRecyclerViewAdapter(getContext(), users);
         adapter.setClickListener(UsersFragment.this);
         userRecyclerView.setAdapter(adapter);
 
@@ -67,12 +89,6 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     public void onItemClick(View view, int position) {
         ((user) getContext()).getUser(users.get(position));
     }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
 
     public interface user {
         void getUser(User user);

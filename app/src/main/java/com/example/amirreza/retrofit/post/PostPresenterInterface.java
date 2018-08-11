@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit.post_fragment;
+package com.example.amirreza.retrofit.post;
 
 import com.example.amirreza.retrofit.data.model.Post;
 

@@ -3,7 +3,7 @@ package com.example.amirreza.retrofit.data;
 import android.util.Log;
 
 import com.example.amirreza.retrofit.data.model.Post;
-import com.example.amirreza.retrofit.post_fragment.PostPresenter;
+import com.example.amirreza.retrofit.post.PostPresenter;
 import com.example.amirreza.retrofit.data.source.Services;
 
 import java.util.ArrayList;

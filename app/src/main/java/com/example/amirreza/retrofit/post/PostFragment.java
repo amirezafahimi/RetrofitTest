@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit.post_fragment;
+package com.example.amirreza.retrofit.post;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
