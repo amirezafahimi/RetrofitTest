@@ -5,10 +5,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.amirreza.retrofit.fragment.PostFragment;
+import com.example.amirreza.retrofit.post_fragment.PostFragment;
 import com.example.amirreza.retrofit.R;
 import com.example.amirreza.retrofit.data.model.User;
-import com.example.amirreza.retrofit.fragment.UsersFragment;
+import com.example.amirreza.retrofit.user_fragment.UsersFragment;
 
 public class MainActivity extends AppCompatActivity implements UsersFragment.user {
 

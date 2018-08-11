@@ -1,10 +1,10 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.data;
 
 import android.util.Log;
 
 import com.example.amirreza.retrofit.data.model.User;
+import com.example.amirreza.retrofit.user_fragment.UserPresenter;
 import com.example.amirreza.retrofit.data.source.Services;
-import com.example.amirreza.retrofit.fragment.UsersFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserRepository implements UserRepositoryInterface{
+public class UserRepository {
     List<User> users = new ArrayList<>();
 
-    @Override
     public void getUserData(final UserPresenter.GetUsersInterface mInterface) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")

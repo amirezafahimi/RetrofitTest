@@ -1,6 +1,6 @@
 package com.example.amirreza.retrofit.data.source;
 
-import com.example.amirreza.retrofit.data.model.Posts;
+import com.example.amirreza.retrofit.data.model.Post;
 import com.example.amirreza.retrofit.data.model.User;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface Services {
     @GET("users")
     Call<List<User>> listUsers();
     @GET("posts")
-    Call<List<Posts>> listPosts(@Query("userId") int userId);
+    Call<List<Post>> listPosts(@Query("userId") int userId);
 }

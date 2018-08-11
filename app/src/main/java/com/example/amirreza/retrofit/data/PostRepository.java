@@ -1,10 +1,9 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.data;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
-import com.example.amirreza.retrofit.adapter.PostRecyclerViewAdapter;
-import com.example.amirreza.retrofit.data.model.Posts;
+import com.example.amirreza.retrofit.data.model.Post;
+import com.example.amirreza.retrofit.post_fragment.PostPresenter;
 import com.example.amirreza.retrofit.data.source.Services;
 
 import java.util.ArrayList;
@@ -16,25 +15,24 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PostRepository implements PostRepositoryInterface{
+public class PostRepository {
 
-    List<Posts> posts = new ArrayList<>();
+    List<Post> posts = new ArrayList<>();
 
-    @Override
     public void getPostsData(int id, final PostPresenter.GetPostsInterface getPosts) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Services services = retrofit.create(Services.class);
-        Call<List<Posts>> repos = services.listPosts(id);
-        repos.enqueue(new Callback<List<Posts>>() {
+        Call<List<Post>> repos = services.listPosts(id);
+        repos.enqueue(new Callback<List<Post>>() {
             @Override
-            public void onResponse(Call<List<Posts>> call, Response<List<Posts>> response) {
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()){
 
                     posts = response.body();
-                    for (Posts posts1 : posts){
+                    for (Post posts1 : posts){
                         Log.e("baba", posts1.getId().toString());
                         getPosts.loadPostData(posts);
                     }
@@ -45,7 +43,7 @@ public class PostRepository implements PostRepositoryInterface{
             }
 
             @Override
-            public void onFailure(Call<List<Posts>> call, Throwable t) {
+            public void onFailure(Call<List<Post>> call, Throwable t) {
 
             }
         });

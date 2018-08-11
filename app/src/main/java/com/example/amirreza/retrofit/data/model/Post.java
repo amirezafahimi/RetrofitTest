@@ -3,7 +3,7 @@ package com.example.amirreza.retrofit.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Posts {
+public class Post {
 
     @SerializedName("userId")
     @Expose

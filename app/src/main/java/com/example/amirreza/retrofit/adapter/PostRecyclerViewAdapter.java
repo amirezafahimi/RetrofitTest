@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.amirreza.retrofit.R;
-import com.example.amirreza.retrofit.data.model.Posts;
+import com.example.amirreza.retrofit.data.model.Post;
 
 import java.util.List;
 
 public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder> {
-    List<Posts> posts;
+    List<Post> posts;
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    public PostRecyclerViewAdapter(Context context, List<Posts> posts) {
+    public PostRecyclerViewAdapter(Context context, List<Post> posts) {
         this.mInflater = LayoutInflater.from(context);
         this.posts = posts;
     }

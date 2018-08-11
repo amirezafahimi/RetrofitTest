@@ -1,7 +1,8 @@
-package com.example.amirreza.retrofit;
+package com.example.amirreza.retrofit.user_fragment;
 
 
 import com.example.amirreza.retrofit.data.model.User;
+import com.example.amirreza.retrofit.data.UserRepository;
 
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class UserPresenter implements UserPresenterInterface.UserActionListerner
     }
 
     @Override
-    public void getUserData() {
+    public void onLoadUser() {
+        userViewListener.showProgress();
         userRepository.getUserData(new GetUsers());
 
     }
@@ -26,11 +28,12 @@ public class UserPresenter implements UserPresenterInterface.UserActionListerner
 
         @Override
         public void loadUserData(List<User> users) {
+            userViewListener.hideProgress();
             userViewListener.showUserList(users);
         }
     }
 
-    interface GetUsersInterface{
+    public interface GetUsersInterface{
 
         void loadUserData(List<User> users);
     }
