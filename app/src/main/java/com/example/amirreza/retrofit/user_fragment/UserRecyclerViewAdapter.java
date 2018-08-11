@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit.adapter;
+package com.example.amirreza.retrofit.user_fragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -24,11 +24,6 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         this.users = users;
     }
 
-    // data is passed into the constructor
-    /*RecyclerViewAdapter(Context context, List<Comment> userComments) {
-        this.mInflater = LayoutInflater.from(context);
-        this.userComments = userComments;
-    }*/
 
     // inflates the row layout from xml when needed
     @Override
@@ -70,11 +65,6 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
-
-    // convenience method for getting data at click position
-//    String getItem(int id) {
-//        return users.get(id);
-//    }
 
     // allows clicks events to be caught
     public void setClickListener(ItemClickListener itemClickListener) {

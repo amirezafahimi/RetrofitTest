@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.amirreza.retrofit.data.PostRepository;
-import com.example.amirreza.retrofit.adapter.PostRecyclerViewAdapter;
 import com.example.amirreza.retrofit.data.model.Post;
 import com.example.amirreza.retrofit.R;
 import com.example.amirreza.retrofit.data.model.User;

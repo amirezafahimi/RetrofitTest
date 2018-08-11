@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 
 import com.example.amirreza.retrofit.R;
 import com.example.amirreza.retrofit.data.UserRepository;
-import com.example.amirreza.retrofit.adapter.UserRecyclerViewAdapter;
 import com.example.amirreza.retrofit.data.model.User;
 
 import java.util.ArrayList;
@@ -32,11 +31,6 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     public UsersFragment() {
         // Required empty public constructor
     }
-
-    public void setUsers(List<User> users){
-        this.users=users;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,10 +63,6 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
         progressBar.setVisibility(View.GONE);
     }
 
-    public interface user {
-        void getUser(User user);
-    }
-
     @Override
     public void onItemClick(View view, int position) {
         ((user) getContext()).getUser(users.get(position));
@@ -81,5 +71,10 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+
+    public interface user {
+        void getUser(User user);
     }
 }
