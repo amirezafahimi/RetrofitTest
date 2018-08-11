@@ -19,9 +19,13 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public UserRecyclerViewAdapter(Context context, List<User> users) {
+    public UserRecyclerViewAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
+    }
+
+    public void setData(List<User> users){
         this.users = users;
+        notifyDataSetChanged();
     }
 
 

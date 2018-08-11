@@ -1,4 +1,4 @@
-package com.example.amirreza.retrofit.data.source;
+package com.example.amirreza.retrofit.data.source.remote;
 
 import com.example.amirreza.retrofit.data.model.Post;
 import com.example.amirreza.retrofit.data.model.User;

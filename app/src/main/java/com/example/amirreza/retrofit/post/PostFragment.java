@@ -1,6 +1,8 @@
 package com.example.amirreza.retrofit.post;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,19 +44,28 @@ public class PostFragment extends Fragment implements PostPresenterInterface.Vie
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_post, container, false);
-        postPresenter = new PostPresenter(this,new PostRepository());
-        int user_id = getArguments().getInt("userId");
-        Log.e("Tag",user_id+"");
-        postPresenter.onLoadPost(user_id);
-        postRecyclerView = view.findViewById(R.id.postRecycler);
+
         return view;
     }
 
     @Override
-    public void showPostsList(List<Post> posts) {
-        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PostRecyclerViewAdapter(getContext(), posts) ;
-        postRecyclerView.setAdapter(adapter);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        postRecyclerView = view.findViewById(R.id.postRecycler);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        postPresenter = new PostPresenter(this,new PostRepository());
+        postPresenter.onLoadPost(getArguments().getInt("userId"));
+        postRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new PostRecyclerViewAdapter(getContext()) ;
+        postRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showPostsList(List<Post> posts) {
+        adapter.setData(posts);
     }
 }

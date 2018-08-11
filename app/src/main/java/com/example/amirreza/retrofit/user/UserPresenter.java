@@ -36,5 +36,7 @@ public class UserPresenter implements UserPresenterInterface.UserActionListerner
     public interface GetUsersInterface{
 
         void loadUserData(List<User> users);
+
+
     }
 }

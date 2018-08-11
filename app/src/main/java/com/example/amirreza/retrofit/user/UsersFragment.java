@@ -57,22 +57,17 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         userPresenter = new UserPresenter(this, new UserRepository());
+        userPresenter.onLoadUser();
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new UserRecyclerViewAdapter(getContext(), users);
+        adapter = new UserRecyclerViewAdapter(getContext());
         adapter.setClickListener(UsersFragment.this);
         userRecyclerView.setAdapter(adapter);
-
-        userPresenter.onLoadUser();
     }
 
     @Override
     public void showUserList(List<User> users) {
         this.users = users;
-        userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new UserRecyclerViewAdapter(getContext(), users);
-        adapter.setClickListener(UsersFragment.this);
-        userRecyclerView.setAdapter(adapter);
-
+        adapter.setData(users);
     }
 
     @Override

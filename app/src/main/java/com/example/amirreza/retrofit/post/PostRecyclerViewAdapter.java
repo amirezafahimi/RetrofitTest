@@ -17,9 +17,13 @@ public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerVi
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    public PostRecyclerViewAdapter(Context context, List<Post> posts) {
+    public PostRecyclerViewAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
+    }
+
+    public void setData(List<Post> posts){
         this.posts = posts;
+        notifyDataSetChanged();
     }
 
     // inflates the row layout from xml when needed

@@ -3,8 +3,9 @@ package com.example.amirreza.retrofit.data;
 import android.util.Log;
 
 import com.example.amirreza.retrofit.data.model.Post;
+import com.example.amirreza.retrofit.data.source.remote.Client;
 import com.example.amirreza.retrofit.post.PostPresenter;
-import com.example.amirreza.retrofit.data.source.Services;
+import com.example.amirreza.retrofit.data.source.remote.Services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +21,9 @@ public class PostRepository {
     List<Post> posts = new ArrayList<>();
 
     public void getPostsData(int id, final PostPresenter.GetPostsInterface getPosts) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Services services = retrofit.create(Services.class);
-        Call<List<Post>> repos = services.listPosts(id);
-        repos.enqueue(new Callback<List<Post>>() {
+
+
+        Client.getRetrofitInstance().create(Services.class).listPosts(id).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()){
