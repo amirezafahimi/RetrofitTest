@@ -10,10 +10,11 @@ import android.widget.TextView;
 import com.example.amirreza.retrofit.R;
 import com.example.amirreza.retrofit.data.model.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostRecyclerViewAdapter extends RecyclerView.Adapter<PostRecyclerViewAdapter.ViewHolder> {
-    List<Post> posts;
+    List<Post> posts = new ArrayList<>();
     private LayoutInflater mInflater;
 
     // data is passed into the constructor

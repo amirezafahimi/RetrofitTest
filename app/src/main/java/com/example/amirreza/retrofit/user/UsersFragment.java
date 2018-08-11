@@ -1,5 +1,6 @@
 package com.example.amirreza.retrofit.user;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +29,11 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
     UserPresenter userPresenter;
     //UserPresenterInterface userPresenterInterface;
     UserRecyclerViewAdapter adapter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     public static Fragment getInstance() {
         UsersFragment fragment = new UsersFragment();
@@ -82,7 +88,7 @@ public class UsersFragment extends Fragment implements UserRecyclerViewAdapter.I
 
     @Override
     public void onItemClick(View view, int position) {
-        ((user) getContext()).getUser(users.get(position));
+        ((user) getActivity()).getUser(users.get(position));
     }
 
     public interface user {

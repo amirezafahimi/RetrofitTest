@@ -11,10 +11,11 @@ import android.widget.TextView;
 import com.example.amirreza.retrofit.R;
 import com.example.amirreza.retrofit.data.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder> {
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
